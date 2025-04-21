@@ -22,7 +22,7 @@
                 $renomear_nome="imagem-" . $numero_aleatorio . "." . $extasao_imagem;
                 $Nome=$renomear_nome;
 
-                $destino="upload/$renomear_nome";
+                $destino="imagem-salvas/$renomear_nome";
 
                 move_uploaded_file($tmp,$destino);
                 
@@ -56,7 +56,7 @@
         <h2>Imagens</h2>
         <div class="card">
             <div class="imagem">
-                <img src="upload/<?=$renomear_nome?>" alt="" id="imagem" >
+                <img src="imagem-salvas/<?=$renomear_nome?>" alt="" id="imagem" >
             </div>
             <div class="infomacao">
                 <p><?=$Nome?></p>
