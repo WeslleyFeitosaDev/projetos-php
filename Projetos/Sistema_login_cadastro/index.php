@@ -9,6 +9,41 @@
 
 </head>
 <body>
+    <?php 
+        $email=$_POST["email"] ?? "";
+        $senha=$_POST["senha"] ?? "";
+
+        $conn=new mysqli("localhost","root","","sistema_cadastro");
+
+        if($conn->connect_error){
+            die("Erro: " .$conn->connect_error);
+        }
+
+        if($email=="" && $senha==""){
+            $messagem="";
+        }
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+            
+            
+            $sql="SELECT * FROM usuario WHERE email = ? AND senha = ? ";
+            $stmt=$conn->prepare($sql);
+            $stmt->bind_param("ss",$email,$senha);
+            $stmt->execute();
+            $reseultdo=$stmt->get_result();
+
+            if($reseultdo->num_rows == 1){
+                header("location: https://www.youtube.com");
+                exit;
+                
+            }else{
+                $messagem="Pessoa não cadastrada";
+            }
+            
+            $stmt->close();
+            $conn->close();
+        }
+        
+    ?>
     
     <div class="caixa_fomulario">
         <div class="parte_laranja">
