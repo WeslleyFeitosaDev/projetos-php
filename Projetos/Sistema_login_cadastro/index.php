@@ -10,6 +10,43 @@
 </head>
 <body>
     
+    <?php 
+        $email=$_POST["email"] ?? "";
+        $senha=$_POST["senha"] ?? "";
+
+        $conn=new mysqli("localhost","root","","sistema_cadastro");
+
+        if($conn->connect_error){
+            die("Erro: " .$conn->connect_error);
+        }
+
+        if($email=="" && $senha==""){
+            $messagem="";
+        }
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+            
+            
+            $sql="SELECT * FROM usuario WHERE email = ? AND senha = ? ";
+            $stmt=$conn->prepare($sql);
+            $stmt->bind_param("ss",$email,$senha);
+            $stmt->execute();
+            $reseultdo=$stmt->get_result();
+
+            if($reseultdo->num_rows == 1){
+                header("location: https://www.youtube.com");
+                exit;
+                
+            }else{
+                $messagem="Pessoa não cadastrada";
+            }
+            
+            $stmt->close();
+            $conn->close();
+        }
+        
+        
+    
+    ?>
     <div class="caixa_fomulario">
         <div class="parte_laranja">
             <div class="textos">
@@ -29,7 +66,7 @@
             <div class="titulo_login">
                 <h2>LOGIN</h2>
             </div>
-            <form action="" method="post" class="formulario">
+            <form action="<?=$_SERVER["PHP_SELF"]?>" method="post" class="formulario">
                 <div class="campo_email">
                     <div class="icone_email">
                         <i class='bx bx-envelope'></i>
@@ -44,7 +81,7 @@
                     <i class='bx bx-show' id="olho"></i>
                     <!-- <i class='bx bx-hide'></i -->
                 </div>
-                
+                <p style="color: #2A324B;"><?=$messagem?></p>
                 <input type="submit" value="Login">
             </form>
 

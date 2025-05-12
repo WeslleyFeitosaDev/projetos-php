@@ -1,5 +1,10 @@
 let icone_olho=document.getElementById("olho");
+let nome=document.getElementById("nome");
+let email=document.getElementById("email");
 let senha=document.getElementById("senha");
+let formulario=document.getElementById("formulario");
+let bnt_enviar=document.getElementById("bnt_enviar");
+let mensagem_campo_branco=document.getElementById("mensagem_campo_branco");
 
 
 
@@ -24,3 +29,6 @@ icone_olho.addEventListener("click",()=>{
         senha.setAttribute("type","password");
     }
 })
+
+
+// fazer com que quando os dados n digitado, n fosse envidados
