@@ -79,6 +79,8 @@
                     <i class='bx bx-show' id="olho"></i>
                     <!-- <i class='bx bx-hide'></i -->
                 </div>
+
+                <a href=""><p class="texto_esqueceu_senha">Esqueceu a senha?</p></a>
                 
                 <input type="submit" value="Login">
             </form>
