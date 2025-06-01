@@ -80,7 +80,6 @@
                     <!-- <i class='bx bx-hide'></i -->
                 </div>
 
-                <a href="../sistema_esqueceu_senha/esqueceu_senha/esqueceu-senha.php"><p class="texto_esqueceu_senha">Esqueceu a senha?</p></a>
                 
                 <input type="submit" value="Login">
             </form>
